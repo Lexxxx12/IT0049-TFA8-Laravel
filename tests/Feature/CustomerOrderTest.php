@@ -192,4 +192,22 @@ class CustomerOrderTest extends TestCase
         $this->assertDatabaseHas('orders', ['id' => $completed->id, 'status' => 'completed']);
         $this->assertDatabaseCount('sales', 0);
     }
+
+    public function test_staff_order_list_does_not_display_uncompiled_blade_directives(): void
+    {
+        $this->actingAs(User::factory()->create(), 'web');
+
+        $this->get(route('orders.index'))->assertOk()
+            ->assertSee('Customer orders')
+            ->assertDontSee('@endsection', false);
+    }
+
+    public function test_customer_order_list_renders_its_browse_action_inside_the_page_heading(): void
+    {
+        $this->actingAs(CustomerAccount::factory()->create(), 'customer');
+
+        $this->get(route('customer.orders.index'))->assertOk()
+            ->assertDontSee('@endsection', false)
+            ->assertSeeInOrder(['class="page-heading"', 'Browse products', 'class="table-card"'], false);
+    }
 }

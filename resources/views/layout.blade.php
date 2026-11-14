@@ -21,10 +21,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f4f6f5"><title>{{ $title ?? 'La pasión' }} | La pasión</title>
 <link rel="icon" href="/brand.svg" type="image/svg+xml"><link rel="preload" href="/fonts/instrument-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/pos.css?v=6">
+<link rel="stylesheet" href="/pos.css?v=7">
 </head>
 <body class="{{ $authPage?'auth-page':'workspace' }} {{ $isCustomer?'customer-workspace':'' }}">
 <a class="skip-link" href="#main">Skip to content</a>

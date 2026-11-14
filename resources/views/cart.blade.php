@@ -10,7 +10,7 @@
 <div class="cart-item-details"><h2>{{ $row['product']?->name??'Unavailable product' }}</h2><p>PHP {{ number_format($row['product']?->price??0,2) }} each</p>
 @if(!$row['available'])<p class="field-error">Unavailable quantity. Reduce it or remove this item.</p>@else<p class="field-help">{{ $row['product']->stock_quantity }} available</p>@endif
 @if($row['product'])
-<form method="post" action="{{ route('customer.cart.update',$row['id']) }}" class="cart-quantity" data-submit>@csrf @method('put')<label class="sr-only" for="quantity-{{ $row['id'] }}">Quantity for {{ $row['product']->name }}</label><input id="quantity-{{ $row['id'] }}" type="number" name="quantity" min="0" max="2147483647" value="{{ $row['quantity'] }}" required><button class="button secondary" type="submit">Update</button><button class="text-danger" name="quantity" value="0" type="submit" formnovalidate>Remove</button></form>
+<form method="post" action="{{ route('customer.cart.update',$row['id']) }}" class="cart-quantity" data-submit>@csrf @method('put')<label class="sr-only" for="quantity-{{ $row['id'] }}">Quantity for {{ $row['product']->name }}</label><input id="quantity-{{ $row['id'] }}" type="number" inputmode="numeric" name="quantity" min="0" max="2147483647" value="{{ $row['quantity'] }}" required><button class="button secondary" type="submit">Update</button><button class="text-danger" name="quantity" value="0" type="submit" formnovalidate>Remove</button></form>
 @endif
 </div><strong class="cart-line-total">PHP {{ number_format($row['total'],2) }}</strong></div>
 @endforeach
