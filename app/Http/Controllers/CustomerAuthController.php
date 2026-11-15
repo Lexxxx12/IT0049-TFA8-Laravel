@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegisterCustomerRequest;
 use App\Models\Customer;
 use App\Rules\PasswordBytes;
+use App\Support\CustomerSession;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -71,11 +72,9 @@ class CustomerAuthController extends Controller
         return view('customer-account', ['customer' => $request->user('customer')->customer()->firstOrFail()]);
     }
 
-    public function logout(Request $request): RedirectResponse
+    public function logout(Request $request, CustomerSession $customerSession): RedirectResponse
     {
-        Auth::guard('customer')->logout();
-        $request->session()->regenerate();
-        $request->session()->forget('url.intended');
+        $customerSession->invalidate($request);
 
         return redirect()->route('customer.login');
     }

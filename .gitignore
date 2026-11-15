@@ -35,3 +35,15 @@ Thumbs.db
 /storage/customer-test-results.json
 
 /storage/redesign-test-results.json
+
+# Local runtime, private uploads, generated caches, and databases.
+/bootstrap/cache/*.php
+/database/*.sqlite*
+/storage/app/private/**
+/storage/app/public/**
+/storage/framework/cache/**
+/storage/framework/sessions/**
+/storage/framework/testing/**
+/storage/framework/views/**
+/storage/logs/**
+!/storage/**/.gitignore
