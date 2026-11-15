@@ -105,6 +105,12 @@ return [
         ),
     ],
 
+    'bootstrap_admin' => [
+        'username' => env('BOOTSTRAP_ADMIN_USERNAME'),
+        'full_name' => env('BOOTSTRAP_ADMIN_FULL_NAME', 'Administrator'),
+        'password' => env('BOOTSTRAP_ADMIN_PASSWORD'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver

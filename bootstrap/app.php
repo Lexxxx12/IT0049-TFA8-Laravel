@@ -12,6 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->trustProxies(at: '*');
         $middleware->redirectGuestsTo(fn (Request $request) => $request->is('customer/*') ? route('customer.login') : route('login'));
         $middleware->redirectUsersTo(fn (Request $request) => $request->is('customer/*') ? route('customer.account') : '/sales/create');
     })
