@@ -19,11 +19,9 @@ services:
       - key: LOG_CHANNEL
         value: stderr
       - key: DB_CONNECTION
-        value: pgsql
-      - key: DB_URL
-        sync: false
-      - key: DB_SCHEMA
-        value: it0049_tfa8
+        value: sqlite
+      - key: DB_DATABASE
+        value: /var/www/html/database/database.sqlite
       - key: SESSION_DRIVER
         value: database
       - key: SESSION_SECURE_COOKIE
